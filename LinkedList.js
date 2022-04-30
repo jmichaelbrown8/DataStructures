@@ -68,7 +68,24 @@ class LinkedList {
   }
 
   /** Adds a node to the head and returns this LinkedList instance */
-  unshift(val) {}
+  unshift(data) {
+    // create a new Node
+    let newHead = new Node(data);
+    // if length is zero, set this.tail to the new Node
+    if (!this.length) {
+      this.tail = newHead;
+    } else {
+      // otherwise, set the current head to the new Node's next prop
+      newHead.next = this.head;
+    }
+    // and set this.head to the new Node
+    this.head = newHead;
+
+    // increment length
+    this.length++;
+
+    return this;
+  }
 
   /** Removes and returns the node from the head */
   shift() {}

@@ -17,6 +17,7 @@ test("should push", () => {
   myList.push("cheese");
   expect(myList.length).toBe(2);
   expect(myList.head.data).toBe(1);
+  expect(myList.head.next.data).toBe("cheese");
   expect(myList.tail.data).toBe("cheese");
 });
 
@@ -49,4 +50,18 @@ test("should pop", () => {
   expect(myList.length).toBe(2);
   expect(myList.head.data).toBe("hello");
   expect(myList.tail.data).toBe("world");
+});
+
+test("should unshift", () => {
+  let myList = new LinkedList();
+  myList.unshift(1);
+  expect(myList.length).toBe(1);
+  expect(myList.head.data).toBe(1);
+  expect(myList.tail.data).toBe(1);
+
+  myList.unshift("cheese");
+  expect(myList.length).toBe(2);
+  expect(myList.head.data).toBe("cheese");
+  expect(myList.head.next.data).toBe(1);
+  expect(myList.tail.data).toBe(1);
 });
