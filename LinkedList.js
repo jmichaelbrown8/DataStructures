@@ -54,4 +54,4 @@ class LinkedList {
   reverse() {}
 }
 
-export default { LinkedList, Node };
+module.exports = { LinkedList, Node };
