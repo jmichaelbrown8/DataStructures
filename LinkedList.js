@@ -88,7 +88,30 @@ class LinkedList {
   }
 
   /** Removes and returns the node from the head */
-  shift() {}
+  shift() {
+    // if length is zero, return null
+    if (!this.length) return null;
+
+    // if length is one, remove the tail
+    if (this.length === 1) {
+      this.tail = null;
+    }
+
+    // store the current head temporarily
+    let currentHead = this.head;
+
+    // set current head's next to this.head
+    this.head = currentHead.next;
+
+    // decrement the count
+    this.length--;
+
+    // remove next from the current head
+    currentHead.next = null;
+
+    // return the current head
+    return currentHead;
+  }
 
   /** Gets and returns the Node at the given index, or null if not possible */
   get(index) {}

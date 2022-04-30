@@ -65,3 +65,34 @@ test("should unshift", () => {
   expect(myList.head.next.data).toBe(1);
   expect(myList.tail.data).toBe(1);
 });
+
+test("should shift", () => {
+  let myList = new LinkedList();
+
+  // shift empty is null
+  expect(myList.shift()).toBe(null);
+
+  // shift one should behave properly
+  myList.push(1);
+  expect(myList.shift().data).toBe(1);
+  expect(myList.length).toBe(0);
+  expect(myList.head).toBe(null);
+  expect(myList.tail).toBe(null);
+
+  // shift two should behave properly
+  myList = new LinkedList();
+  myList.push("hello").push("world");
+  expect(myList.shift().data).toBe("hello");
+  expect(myList.length).toBe(1);
+  expect(myList.head.data).toBe("world");
+  expect(myList.head.next).toBe(null);
+  expect(myList.tail.data).toBe("world");
+
+  // shift 3+ should behave properly
+  myList = new LinkedList();
+  myList.push("hello").push("world").push("again");
+  expect(myList.shift().data).toBe("hello");
+  expect(myList.length).toBe(2);
+  expect(myList.head.data).toBe("world");
+  expect(myList.tail.data).toBe("again");
+});
