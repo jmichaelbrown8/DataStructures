@@ -1,19 +1,30 @@
 class Node {
-  constructor(val) {
-    this.data = val;
+  /**
+   * Node class to define a node in the LinkedList
+   *
+   * Can be instantiated with `new Node(data)` to set its data property
+   */
+  constructor(data) {
+    this.data = data;
     this.next = null;
   }
 }
 
 class LinkedList {
+  /**
+   * LinkedList class to define a list of Node classes
+   *
+   * Can be instantiated with `new LinkedList()`
+   */
   constructor() {
     this.head = null;
     this.tail = null;
     this.length = 0;
   }
 
-  push(val) {
-    var newNode = new Node(val);
+  /** Adds a node to the tail and returns this LinkedList instance */
+  push(data) {
+    var newNode = new Node(data);
     if (!this.head) {
       this.head = newNode;
       this.tail = this.head;
@@ -25,6 +36,7 @@ class LinkedList {
     return this;
   }
 
+  /** Removes and returns the node from the tail */
   pop() {
     // if length is zero, return null
     if (!this.length) return null;
@@ -55,14 +67,22 @@ class LinkedList {
     return current;
   }
 
+  /** Adds a node to the head and returns this LinkedList instance */
   unshift(val) {}
 
+  /** Removes and returns the node from the head */
   shift() {}
 
+  /** Gets and returns the Node at the given index, or null if not possible */
   get(index) {}
 
+  /** Sets the Node at the given index, replacing the current. Returns the new List, or null if not possible to set */
   set(value, index) {}
 
+  /** Inserts the Node at the given index, setting its next property to the previous Node at the index */
+  insert(value, index) {}
+
+  /** Reverses the LinkedList in place and returns this LinkedList instance */
   reverse() {}
 }
 
