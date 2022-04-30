@@ -27,20 +27,32 @@ class LinkedList {
 
   pop() {
     // if length is zero, return null
+    if (!this.length) return null;
+
     // if length is one, set head and tail to null, then return
+    if (this.length === 1) {
+      let oldTail = this.tail;
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return oldTail;
+    }
+
     let current = this.head;
     let newTail = current;
+
     // find the node before the tail
-    while (newTail.next) {
+    while (current.next) {
       current = newTail.next;
-      newTail = current;
+      if (current.next) {
+        newTail = current;
+      }
     }
-    // store the value of the last tail to return later
-    // set next to null on the new tail
-    // set this.tail to new tail
-    // decrement the length
-    // return the old tail
-    return oldTail;
+
+    newTail.next = null;
+    this.tail = newTail;
+    this.length--;
+    return current;
   }
 
   unshift(val) {}
