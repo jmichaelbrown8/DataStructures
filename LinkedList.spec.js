@@ -114,3 +114,32 @@ describe("shift", () => {
     expect(myList.tail.data).toBe("again");
   });
 });
+
+describe("get", () => {
+  beforeEach(() => {
+    myList = new LinkedList();
+  });
+
+  it("should return null if index is negative", () => {
+    expect(myList.get(-5)).toBe(null);
+  });
+
+  it("should return null if index is out of bounds", () => {
+    expect(myList.get(100)).toBe(null);
+  });
+
+  it("should return return the head if index is 0", () => {
+    myList.push(1);
+    expect(myList.get(0)).toBe(myList.head);
+  });
+
+  it("should return return the tail if index is one less than the length", () => {
+    myList.push(1).push(2);
+    expect(myList.get(1)).toBe(myList.tail);
+  });
+
+  it("should return return the right index", () => {
+    myList.push(1).push(2).push(3).push(4).push(5);
+    expect(myList.get(2).data).toBe(3);
+  });
+});

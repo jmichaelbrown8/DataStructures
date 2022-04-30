@@ -116,10 +116,26 @@ class LinkedList {
   /** Gets and returns the Node at the given index, or null if not possible */
   get(index) {
     // if index is negative, return null
+    if (index < 0) return null;
+
     // if index is greater or equal to the length, return null
+    if (index >= this.length) return null;
+
     // if index is 0, return the head
+    if (index === 0) return this.head;
+
     // if index is length - 1, return the tail
-    // otherwise, do the work
+    if (index === this.length - 1) return this.tail;
+
+    // loop through until the index to return the Node
+    let i = 0;
+    let current = this.head;
+    while (i !== index) {
+      current = current.next;
+      i++;
+    }
+
+    return current;
   }
 
   /** Sets the Node at the given index, replacing the current. Returns the new List, or null if not possible to set */
