@@ -139,7 +139,16 @@ class LinkedList {
   }
 
   /** Sets the Node at the given index, replacing the current. Returns the new List, or null if not possible to set */
-  set(value, index) {}
+  set(value, index) {
+    // get the Node at the index
+    let node = this.get(index);
+    // if the Node is null, return false
+    if (!node) return false;
+
+    node.data = value;
+
+    return this;
+  }
 
   /** Inserts the Node at the given index, setting its next property to the previous Node at the index */
   insert(value, index) {}

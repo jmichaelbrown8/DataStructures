@@ -143,3 +143,23 @@ describe("get", () => {
     expect(myList.get(2).data).toBe(3);
   });
 });
+
+describe("set", () => {
+  it("should return false if index not in list", () => {
+    expect(myList.set(1, 0)).toBe(false);
+  });
+
+  it("should set the value, leaving everything else", () => {
+    myList.push(1).push(2).push(3);
+    myList.set("cheese", 1);
+    expect(myList.get(1).data).toBe("cheese");
+  });
+
+  it("should return the same list, updated", () => {
+    myList.push(1);
+    myList.set("cheese", 0);
+    expect(myList.length).toBe(1);
+    expect(myList.head.data).toBe("cheese");
+    expect(myList.head).toBe(myList.tail);
+  });
+});
