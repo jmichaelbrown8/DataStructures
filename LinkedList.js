@@ -114,7 +114,13 @@ class LinkedList {
   }
 
   /** Gets and returns the Node at the given index, or null if not possible */
-  get(index) {}
+  get(index) {
+    // if index is negative, return null
+    // if index is greater or equal to the length, return null
+    // if index is 0, return the head
+    // if index is length - 1, return the tail
+    // otherwise, do the work
+  }
 
   /** Sets the Node at the given index, replacing the current. Returns the new List, or null if not possible to set */
   set(value, index) {}
