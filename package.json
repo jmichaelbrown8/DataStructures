@@ -1,15 +1,15 @@
 {
-  "name": "practiceproblems",
+  "name": "datastructures",
   "version": "1.0.0",
-  "description": "",
-  "main": "CeasarCipher.js",
+  "description": "Practice data structures",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "jest": "^28.0.3"
   }
 }
