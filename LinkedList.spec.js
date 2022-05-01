@@ -208,3 +208,38 @@ describe("insert", () => {
     expect(myNode.next).toBe(myList.get(2));
   });
 });
+
+describe("reverse", () => {
+  it("should reverse zero items properly", () => {
+    myList.reverse();
+    expect(myList.head).toBe(null);
+    expect(myList.tail).toBe(null);
+    expect(myList.length).toBe(0);
+  });
+
+  it("should reverse one item properly", () => {
+    myList.push(1);
+    myList.reverse();
+    expect(myList.head.data).toBe(1);
+    expect(myList.tail.data).toBe(1);
+    expect(myList.length).toBe(1);
+  });
+
+  it("should reverse two items properly", () => {
+    myList.push(1).push(2);
+    myList.reverse();
+    expect(myList.head.data).toBe(2);
+    expect(myList.tail.data).toBe(1);
+    expect(myList.head.next.data).toBe(1);
+    expect(myList.tail.next).toBe(null);
+  });
+
+  it("should reverse three items properly", () => {
+    myList.push(1).push(2).push(3);
+    myList.reverse();
+    expect(myList.head.data).toBe(3);
+    expect(myList.tail.data).toBe(1);
+    expect(myList.head.next.data).toBe(2);
+    expect(myList.tail.next).toBe(null);
+  });
+});

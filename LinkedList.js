@@ -195,7 +195,35 @@ class LinkedList {
   }
 
   /** Reverses the LinkedList in place and returns this LinkedList instance */
-  reverse() {}
+  reverse() {
+    // nothing needed for length 1 or 0
+    if (this.length < 2) return this;
+
+    // loop through all items, setting next back to previous
+    let previous = this.head;
+    let current = previous.next;
+    let next = current.next;
+
+    // 1 <- 2 <- 3 <- 4 <- 5 -> null
+    //                p    c    n
+    while (true) {
+      // flip the link backwards
+      current.next = previous;
+      // move all variables forward
+      previous = current;
+      current = next;
+      if (!next) break;
+      next = next.next;
+    }
+
+    // set new head and new tail
+    [this.head, this.tail] = [this.tail, this.head];
+    // set new tail and set it's next to null
+    this.tail.next = null;
+
+    // return this;
+    return this;
+  }
 }
 
 module.exports = { LinkedList, Node };
