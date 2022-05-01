@@ -151,7 +151,48 @@ class LinkedList {
   }
 
   /** Inserts the Node at the given index, setting its next property to the previous Node at the index */
-  insert(value, index) {}
+  insert(value, index) {
+    // get the preceding node
+    let precedingNode = this.get(index - 1);
+
+    // create the node
+    let myNode = new Node(value);
+
+    // if the position isn't possible, return false
+    if (index < 0 || index > this.length) return false;
+
+    // insert at head if index is 0
+    if (index === 0) {
+      let lastHead = this.head;
+      this.head = myNode;
+      myNode.next = lastHead;
+      if (this.length === 0) {
+        this.tail = this.head;
+      }
+    }
+
+    // insert at tail if index is length
+    else if (index === this.length) {
+      let lastTail = this.tail;
+      lastTail.next = myNode;
+      this.tail = myNode;
+    }
+
+    // else, loop through to get the node at the index before
+    else {
+      let i = 0;
+      let preIndex = this.head;
+      while (i !== index - 1) {
+        preIndex = preIndex.next;
+        i++;
+      }
+      myNode.next = preIndex.next;
+      preIndex.next = myNode;
+    }
+
+    this.length++;
+    return this;
+  }
 
   /** Reverses the LinkedList in place and returns this LinkedList instance */
   reverse() {}

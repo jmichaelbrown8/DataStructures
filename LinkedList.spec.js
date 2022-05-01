@@ -145,6 +145,10 @@ describe("get", () => {
 });
 
 describe("set", () => {
+  beforeEach(() => {
+    myList = new LinkedList();
+  });
+
   it("should return false if index not in list", () => {
     expect(myList.set(1, 0)).toBe(false);
   });
@@ -161,5 +165,46 @@ describe("set", () => {
     expect(myList.length).toBe(1);
     expect(myList.head.data).toBe("cheese");
     expect(myList.head).toBe(myList.tail);
+  });
+});
+
+describe("insert", () => {
+  beforeEach(() => {
+    myList = new LinkedList();
+  });
+
+  it("should return false if not possible", () => {
+    expect(myList.insert("cheese", 1)).toBe(false);
+  });
+
+  it("should insert at head properly", () => {
+    myList.push(1).push(2).push(3);
+    myList.insert(0, 0);
+    expect(myList.head.data).toBe(0);
+    expect(myList.length).toBe(4);
+  });
+
+  it("should set tail as well if length is 0", () => {
+    myList.insert("hello", 0);
+    expect(myList.head).toBe(myList.tail);
+  });
+
+  it("should insert at tail properly", () => {
+    myList.push(1).push(2).push(3);
+    myList.insert("cheese", 3);
+    expect(myList.tail.data).toBe("cheese");
+    expect(myList.length).toBe(4);
+  });
+
+  it("should insert in middle properly", () => {
+    myList.push(1).push(5).push(10);
+    myList.insert(7, 1);
+
+    let myNode = myList.get(1);
+
+    expect(myNode.data).toBe(7);
+    expect(myList.length).toBe(4);
+    expect(myList.head.next).toBe(myNode);
+    expect(myNode.next).toBe(myList.get(2));
   });
 });
